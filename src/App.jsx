@@ -12,6 +12,28 @@ const PlayIcon = () => (
   </svg>
 )
 
+// Custom golden SVG icon set
+const L = { strokeWidth:'1.5', strokeLinecap:'round', strokeLinejoin:'round', fill:'none', stroke:'currentColor' }
+const LocationIcon  = () => <svg className="icon-svg" viewBox="0 0 24 24" {...L}><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+const PhoneIcon     = () => <svg className="icon-svg" viewBox="0 0 24 24" {...L}><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+const EmailIcon     = () => <svg className="icon-svg" viewBox="0 0 24 24" {...L}><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+const ChatIcon      = () => <svg className="icon-svg" viewBox="0 0 24 24" {...L}><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+const CalendarIcon  = () => <svg className="icon-svg" viewBox="0 0 24 24" {...L}><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+const DocumentIcon  = () => <svg className="icon-svg" viewBox="0 0 24 24" {...L}><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+const HomeIcon      = () => <svg className="icon-svg" viewBox="0 0 24 24" {...L}><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+const PlanetIcon    = () => <svg className="icon-svg" viewBox="0 0 24 24" {...L}><circle cx="12" cy="12" r="4"/><ellipse cx="12" cy="12" rx="10" ry="3.5" transform="rotate(-30 12 12)"/></svg>
+const EyeIcon       = () => <svg className="icon-svg" viewBox="0 0 24 24" {...L}><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+const HeartIcon     = () => <svg className="icon-svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+const ShareIcon     = () => <svg className="icon-svg" viewBox="0 0 24 24" {...L}><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+const BirthChartIcon= () => <svg className="icon-svg" viewBox="0 0 24 24" {...L}><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="12" y1="15" x2="12" y2="22"/><line x1="2" y1="12" x2="9" y2="12"/><line x1="15" y1="12" x2="22" y2="12"/></svg>
+const TempleIcon    = () => <svg className="icon-svg" viewBox="0 0 24 24" {...L}><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12,2 20,7 4,7"/></svg>
+const ClockIcon     = () => <svg className="icon-svg" viewBox="0 0 24 24" {...L}><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+const RingsIcon     = () => <svg className="icon-svg" viewBox="0 0 24 24" {...L}><circle cx="9" cy="12" r="5"/><circle cx="15" cy="12" r="5"/></svg>
+const WrenchIcon    = () => <svg className="icon-svg" viewBox="0 0 24 24" {...L}><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+const ScrollIcon    = () => <svg className="icon-svg" viewBox="0 0 24 24" {...L}><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+const NumbersIcon   = () => <svg className="icon-svg" viewBox="0 0 24 24" {...L}><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg>
+const SparkIcon     = () => <svg className="icon-svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2l1.68 8.32L22 12l-8.32 1.68L12 22l-1.68-8.32L2 12l8.32-1.68z"/></svg>
+
 function scrollToSection(id) {
   const el = document.getElementById(id)
   if (el) el.scrollIntoView({ behavior: 'smooth' })
@@ -99,7 +121,7 @@ function useStarCanvas() {
         ctx.fill()
       })
 
-      if (Math.random() < 0.003 && shootingStars.length < 2) spawnShootingStar()
+      if (Math.random() < 0.018 && shootingStars.length < 5) spawnShootingStar()
       shootingStars = shootingStars.filter(s => s.life < s.maxLife)
       shootingStars.forEach(s => {
         s.life++
@@ -109,18 +131,20 @@ function useStarCanvas() {
 
         const tx = Math.cos(s.angle) * s.len
         const ty = Math.sin(s.angle) * s.len
-        const grad = ctx.createLinearGradient(s.x, s.y, s.x + tx, s.y + ty)
+        // Tail trails behind the head (opposite direction of motion)
+        const grad = ctx.createLinearGradient(s.x, s.y, s.x - tx, s.y - ty)
         grad.addColorStop(0, `rgba(240,200,74,${s.alpha * 0.55})`)
         grad.addColorStop(0.4, `rgba(240,200,74,${s.alpha * 0.2})`)
         grad.addColorStop(1, 'rgba(240,200,74,0)')
 
         ctx.beginPath()
         ctx.moveTo(s.x, s.y)
-        ctx.lineTo(s.x + tx, s.y + ty)
+        ctx.lineTo(s.x - tx, s.y - ty)
         ctx.strokeStyle = grad
         ctx.lineWidth = 1.2
         ctx.stroke()
 
+        // Bright dot at the head (leading point)
         ctx.beginPath()
         ctx.arc(s.x, s.y, 1.2, 0, Math.PI * 2)
         ctx.fillStyle = `rgba(255,240,180,${s.alpha * 0.7})`
@@ -340,12 +364,13 @@ function Navbar() {
   return (
     <nav className={scrolled ? 'nav-scrolled' : ''}>
       <span className="nav-logo" onClick={() => scrollToSection('hero')}>
-        Nidan<span>Guru</span>
+        <img src="/Logo.png" alt="NidanGuru" className="nav-logo-img" />
       </span>
       <ul>
         <li><button className="nav-link" onClick={() => scrollToSection('about')}>About</button></li>
         <li><button className="nav-link" onClick={() => scrollToSection('videos')}>Videos</button></li>
-        <li><button className="nav-link" onClick={() => scrollToSection('class-banner')}>Classes</button></li>
+        <li><button className="nav-link" onClick={() => scrollToSection('vastu')}>Vastu</button></li>
+        <li><button className="nav-link" onClick={() => scrollToSection('classes')}>Classes</button></li>
         <li><button className="nav-link" onClick={() => scrollToSection('testimonials')}>Testimonials</button></li>
         <li><button className="nav-link" onClick={() => scrollToSection('services')}>Services</button></li>
         <li><button className="nav-cta nav-link" onClick={() => scrollToSection('booking')}>Book Now</button></li>
@@ -417,11 +442,11 @@ function Hero() {
         <div className="hero-portrait" ref={portraitRef}>
           <img src="/guru.jpg" alt="Acharya Nidhan Singh" />
         </div>
-        <p className="hero-eyebrow">Vedic Astrology & Vastu Shastra</p>
+        <p className="hero-eyebrow">Tantra , Astrology & Vastu</p>
         <h1 className="hero-title">
-          Ancient Wisdom. <em>Modern Living.</em>
+          Ancient Wisdom, <em>Modern Living,</em>
         </h1>
-        <div className="hero-btns">
+<div className="hero-btns">
           <button className="btn-primary" onClick={() => scrollToSection('booking')}>Seek Your Nidan</button>
           <button className="btn-ghost" onClick={() => scrollToSection('services')}>Explore Services</button>
         </div>
@@ -434,25 +459,56 @@ function Hero() {
   )
 }
 
-// Stats strip
-function StatNumber({ target, delay, label }) {
-  const { ref, count } = useCountUp(target, 1800, delay)
-  return (
-    <div className="stat-cell" ref={ref}>
-      <div className="stat-num">{count.toLocaleString()}+</div>
-      <div className="stat-label">{label}</div>
-    </div>
-  )
-}
+// Social platform SVG logos
+const InstagramLogo = () => (
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="social-svg">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+  </svg>
+)
+
+const FacebookLogo = () => (
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="social-svg">
+    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+  </svg>
+)
+
+const YouTubeLogo = () => (
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="social-svg">
+    <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+  </svg>
+)
+
+const XLogo = () => (
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="social-svg">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+  </svg>
+)
+
+const socialsData = [
+  { platform: 'Instagram', count: '34K+', label: 'Followers', url: 'https://www.instagram.com/nidanguru', Logo: InstagramLogo },
+  { platform: 'Facebook', count: '10K+', label: 'Followers', url: 'https://www.facebook.com/nidanguru', Logo: FacebookLogo },
+  { platform: 'YouTube', count: '28K+', label: 'Subscribers', url: 'https://www.youtube.com/@nidanguru', Logo: YouTubeLogo },
+]
 
 function StatsStrip() {
   return (
     <section className="stats-section">
       <div className="section-wrap">
+        <p className="social-strip-heading">A community of seekers and believers</p>
         <div className="hero-stats-grid">
-          <StatNumber target={25} delay={0} label="Years Experience" />
-          <StatNumber target={10000} delay={200} label="Consultations" />
-          <StatNumber target={500} delay={400} label="Vastu Audits" />
+          {socialsData.map((s) => (
+            <a
+              key={s.platform}
+              href={s.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="stat-cell social-cell"
+            >
+              <s.Logo />
+              <div className="stat-num">{s.count}</div>
+              <div className="stat-label">{s.label} on {s.platform}</div>
+            </a>
+          ))}
         </div>
       </div>
     </section>
@@ -471,38 +527,38 @@ function About() {
                 <img src="/guru-about.jpg" alt="Acharya Nidhan Singh" style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'relative', zIndex: 1 }} />
               </div>
               <div className="about-badge">
-                <strong>25+</strong>
+                <strong>20+</strong>
                 <span>Years</span>
               </div>
             </div>
           </Reveal>
           <Reveal>
             <div className="about-content">
-              <p className="section-label">✦ About the Guru</p>
-              <h2 className="section-title">Acharya <em>Nidhan Singh</em></h2>
+              <p className="section-label">✦ Who is Nidanguru?</p>
+              <h2 className="section-title">NidanGuru ~ Acharya Dr <em>Vivek Panchtatw</em></h2>
               <div className="gold-divider left" />
               <p className="section-desc" style={{ marginBottom: '1.5rem' }}>
-                A lineage-trained Vedic astrologer and Vastu consultant with over 25 years of dedicated practice. Acharyaji combines classical Parashari and Jaimini systems with deep intuitive insight, offering guidance that is both scripturally grounded and practically transformative.
+                A lineage-trained Vedic astrologer and Vastu consultant with over 20 years of dedicated practice. Acharyaji combines classical Parashari and Jaimini systems with deep intuitive insight, offering guidance that is both scripturally grounded and practically transformative.
               </p>
               <p className="section-desc">
                 Having studied under revered Gurus across Varanasi and Haridwar, he brings rare depth to every consultation — whether it is a birth chart reading, a complex Muhurta, or a comprehensive Vastu audit for your home or business.
               </p>
               <div className="credentials">
                 <div className="cred-item">
-                  <strong>Jyotish Acharya</strong>
-                  <span>Varanasi Sanskrit Vidyapeeth</span>
+                  <strong>PhD in Astro-Vastu</strong>
+                  <span>Institute of Psychology</span>
                 </div>
                 <div className="cred-item">
-                  <strong>Vastu Visharad</strong>
-                  <span>All India Federation</span>
+                  <strong>2,500+</strong>
+                  <span>Vastu Visits</span>
                 </div>
                 <div className="cred-item">
-                  <strong>10,000+</strong>
-                  <span>Consultations delivered</span>
+                  <strong>1 Lakh+</strong>
+                  <span>Consultations</span>
                 </div>
                 <div className="cred-item">
-                  <strong>Pan-India</strong>
-                  <span>& International clients</span>
+                  <strong>Multi-Dimension Vastu</strong>
+                  <span>Prashna Shastra, Medical Astrology, Jaimini etc.</span>
                 </div>
               </div>
               <button className="btn-primary" style={{ marginTop: '2.5rem' }} onClick={() => scrollToSection('booking')}>
@@ -552,9 +608,6 @@ function Videos() {
           <p className="section-label">✦ Watch & Learn</p>
           <h2 className="section-title">From Our <em>YouTube</em> Channel</h2>
           <div className="gold-divider" />
-          <p className="section-desc" style={{ textAlign: 'center', margin: '0 auto' }}>
-            Explore free wisdom through our carefully crafted video series on Vedic astrology and Vastu Shastra.
-          </p>
         </Reveal>
         <StaggeredReveal className="videos-grid">
           {videosData.map(v => (
@@ -568,7 +621,7 @@ function Videos() {
                 <div className="video-play">
                   <div className="play-btn"><PlayIcon /></div>
                 </div>
-                <div className="video-views-badge">👁 {v.views} views</div>
+                <div className="video-views-badge"><EyeIcon /> {v.views} views</div>
               </div>
               <div className="video-body">
                 <p className="video-tag">{v.tag}</p>
@@ -583,43 +636,75 @@ function Videos() {
   )
 }
 
-// Class Banner
-function ClassBanner() {
+// Vastu Section
+const vastuOfferings = [
+  { Icon: DocumentIcon, title: 'Vastu Reports',              desc: 'Detailed written reports mapping spatial energies of your property with precise directional remedies and action points.' },
+  { Icon: HomeIcon,     title: 'In-Person Offline Visit',    desc: 'On-site evaluation by Acharyaji himself — a thorough walk-through of your home or business premises.' },
+  { Icon: PlanetIcon,   title: 'Astro-Vastu Included',       desc: 'Every consultation integrates your personal birth chart with Vastu analysis for a truly personalised spatial remedy.' },
+  { Icon: ChatIcon,     title: '45-Day Open Discussion Window', desc: 'Post-consultation support for 45 days — ask follow-up questions, clarify remedies, and track your progress directly with Acharyaji.' },
+]
+
+function Vastu() {
   return (
-    <section id="class-banner">
-      <div className="class-banner-bg" />
-      <div className="class-banner-border">
-        <div className="class-banner-corner tl" />
-        <div className="class-banner-corner tr" />
-        <div className="class-banner-corner bl" />
-        <div className="class-banner-corner br" />
-      </div>
-      <div className="class-banner-inner">
-        <Reveal>
-          <div className="class-banner-tag">🎓 Now Enrolling — Batch Starts April 2026</div>
-          <h2 className="class-banner-title">
-            Learn <em>Vedic Astrology</em> & Vastu Shastra
-          </h2>
-          <p className="class-banner-desc">
-            Join Acharyaji's physical classroom programme in New Delhi. A structured 6-month course covering Parashari Jyotish, Muhurta, and practical Vastu — from foundation to advanced practice.
-          </p>
-          <div className="class-banner-perks">
-            <div className="class-perk"><span>📍</span> In-person, New Delhi</div>
-            <div className="class-perk"><span>📅</span> 6-Month Programme</div>
-            <div className="class-perk"><span>📜</span> Certificate on Completion</div>
-            <div className="class-perk"><span>👥</span> Small Batch (15 seats)</div>
-          </div>
-          <div className="class-banner-btns">
-            <button className="btn-register" onClick={() => scrollToSection('booking')}>
-              ✦ Register Interest
+    <section id="vastu" className="vastu-section">
+      <div className="section-wrap">
+        <div className="vastu-grid">
+
+          {/* Left — Offerings */}
+          <Reveal className="vastu-left">
+            <p className="section-label">✦ Vastu Shastra</p>
+            <h2 className="section-title">Sacred Space,<br /><em>Harmonised Life</em></h2>
+            <div className="gold-divider left" style={{ marginBottom: '2rem' }} />
+            <div className="vastu-offerings">
+              {vastuOfferings.map((item, i) => (
+                <div className="vastu-item" key={i}>
+                  <div className="vastu-item-icon"><item.Icon /></div>
+                  <div>
+                    <h4 className="vastu-item-title">{item.title}</h4>
+                    <p className="vastu-item-desc">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <button className="btn-primary" style={{ marginTop: '2.8rem' }} onClick={() => scrollToSection('booking')}>
+              Book a Vastu Consultation
             </button>
-            <button className="btn-ghost" onClick={() => scrollToSection('booking')}>Learn More</button>
-          </div>
-          <div className="class-seats">
-            <span className="seats-dot" />
-            Only 7 seats remaining — register early
-          </div>
-        </Reveal>
+          </Reveal>
+
+          {/* Right — Reel-style video placeholder */}
+          <Reveal className="vastu-right">
+            <div className="vastu-reel-wrap">
+              <div className="vastu-reel-label">
+                <InstagramLogo />
+                <span>Reels</span>
+              </div>
+              <div className="vastu-reel-phone">
+                <div className="vastu-reel-screen">
+                  {/* Drop your Instagram reel video src here */}
+                  <div className="vastu-reel-placeholder">
+                    <div className="vastu-reel-play">
+                      <PlayIcon />
+                    </div>
+                    <p className="vastu-reel-hint">Add your Instagram Reel here</p>
+                  </div>
+                  <div className="vastu-reel-overlay">
+                    <div className="vastu-reel-user">
+                      <div className="vastu-reel-avatar">NG</div>
+                      <span>@nidanguru</span>
+                    </div>
+                    <div className="vastu-reel-actions">
+                      <button className="reel-action-btn"><HeartIcon /><span>12K</span></button>
+                      <button className="reel-action-btn"><ChatIcon /><span>340</span></button>
+                      <button className="reel-action-btn"><ShareIcon /><span>Share</span></button>
+                    </div>
+                  </div>
+                </div>
+                <div className="vastu-reel-notch" />
+              </div>
+            </div>
+          </Reveal>
+
+        </div>
       </div>
     </section>
   )
@@ -649,6 +734,130 @@ const testimonialsData = [
     fallback: 'AV'
   }
 ]
+
+// Classes Section
+const classesData = [
+  {
+    subject: 'Tantra',
+    Icon: SparkIcon,
+    desc: 'A sacred Guru–Shishya Parampara. Acharyaji has acquired the rare knowledge of 10 Mahavidya Tantra — passed only one-on-one, as it has been for centuries. The identity of every student remains 100% private.',
+    duration: 'Ongoing · 1-on-1',
+    mode: 'Strictly Private',
+    isTantra: true,
+  },
+  {
+    subject: 'Vastu Shastra',
+    Icon: TempleIcon,
+    desc: 'Master the ancient science of spatial harmony — directions, elements, and energy flow for homes and businesses.',
+    duration: '3 Months',
+    mode: 'Offline · New Delhi',
+    seats: 15,
+    filled: 12,
+  },
+  {
+    subject: 'Astrology',
+    Icon: BirthChartIcon,
+    desc: 'A comprehensive journey through Parashari Jyotish — birth charts, dashas, transits, and predictive techniques.',
+    duration: '6 Months',
+    mode: 'Offline · New Delhi',
+    seats: 15,
+    filled: 15,
+  },
+  {
+    subject: 'Numerology',
+    Icon: NumbersIcon,
+    desc: 'Decode the vibrational language of numbers — names, dates, and life path numbers for self-discovery and guidance.',
+    duration: '1 Month',
+    mode: 'Offline · New Delhi',
+    seats: 20,
+    filled: 9,
+  },
+]
+
+function ClassCard({ data }) {
+  if (data.isTantra) {
+    return (
+      <div className="class-card class-card--tantra">
+        <div className="tantra-glow" />
+        <div className="class-card-top">
+          <span className="class-icon"><data.Icon /></span>
+          <span className="class-status-badge status-tantra">✦ Guru–Shishya Parampara</span>
+        </div>
+        <h3 className="class-subject tantra-subject">{data.subject}</h3>
+        <div className="tantra-badges">
+          <span className="tantra-badge">10 Mahavidya</span>
+          <span className="tantra-badge">1-on-1 Only</span>
+          <span className="tantra-badge">100% Private</span>
+        </div>
+        <p className="class-desc">{data.desc}</p>
+        <div className="class-meta">
+          <span><CalendarIcon /> {data.duration}</span>
+          <span><LocationIcon /> {data.mode}</span>
+        </div>
+        <button className="class-enrol-btn class-enrol-btn--tantra" onClick={() => scrollToSection('booking')}>
+          ✦ Request Audience
+        </button>
+      </div>
+    )
+  }
+
+  const pct = Math.round((data.filled / data.seats) * 100)
+  const isFull = data.filled >= data.seats
+
+  let statusLabel, statusClass
+  if (isFull)       { statusLabel = 'Fully Booked'; statusClass = 'status-full' }
+  else if (pct >= 70) { statusLabel = `Only ${data.seats - data.filled} seats left`; statusClass = 'status-low' }
+  else              { statusLabel = `${data.seats - data.filled} seats available`; statusClass = 'status-open' }
+
+  return (
+    <div className={`class-card ${isFull ? 'class-card--full' : ''}`}>
+      <div className="class-card-top">
+        <span className="class-icon"><data.Icon /></span>
+        <span className={`class-status-badge ${statusClass}`}>{statusLabel}</span>
+      </div>
+      <h3 className="class-subject">{data.subject}</h3>
+      <p className="class-desc">{data.desc}</p>
+      <div className="class-meta">
+        <span><CalendarIcon /> {data.duration}</span>
+        <span><LocationIcon /> {data.mode}</span>
+      </div>
+      <div className="class-seats-bar">
+        <div className="seats-bar-track">
+          <div className="seats-bar-fill" style={{ width: `${pct}%`, background: isFull ? '#c0392b' : pct >= 70 ? '#e67e22' : 'var(--gold)' }} />
+        </div>
+        <span className="seats-bar-label">{data.filled}/{data.seats} filled</span>
+      </div>
+      <button
+        className={`class-enrol-btn ${isFull ? 'class-enrol-btn--disabled' : ''}`}
+        onClick={() => !isFull && scrollToSection('booking')}
+        disabled={isFull}
+      >
+        {isFull ? 'Join Waitlist' : '✦ Enrol Now'}
+      </button>
+    </div>
+  )
+}
+
+function Classes() {
+  return (
+    <section id="classes" className="classes-section">
+      <div className="section-wrap">
+        <Reveal className="classes-header">
+<h2 className="section-title">Offline <em>Classes</em></h2>
+          <div className="gold-divider" />
+          <p className="section-desc" style={{ textAlign: 'center', margin: '0 auto', maxWidth: '780px' }}>
+            Taught personally by{' '}
+            <em style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', color: 'var(--gold-light)' }}>Acharya Dr Vivek Panchtatw</em>,{' '}
+            Central Delhi's only offline Astro-Vastu consultant.
+          </p>
+        </Reveal>
+        <StaggeredReveal className="classes-grid">
+          {classesData.map((c, i) => <ClassCard key={i} data={c} />)}
+        </StaggeredReveal>
+      </div>
+    </section>
+  )
+}
 
 function Testimonials() {
   return (
@@ -680,6 +889,25 @@ function Testimonials() {
             </div>
           ))}
         </StaggeredReveal>
+        <Reveal>
+          <div className="testi-cta">
+            <a
+              href="https://www.google.com/search?newwindow=1&sca_esv=119eba1c4e06741f&rlz=1C5XQIR_enIN1176IN1176&sxsrf=ANbL-n5jJPbNb21nIL_RqvJGp6H_G34s9g:1773831979379&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOZyMECwgn3MQO-4FvRx2gYz_xEffAkcpsTyJxWXHrz7gNacQtTXF8y1saVAMI-CZj3mz22sRE7EiO5klaDnLSAIXgPxH2cjGFw4-O_3pTto9QaoqeGIvMG5-jICgK6AYAu8s6Hg%3D&q=The+NIDAN+%28Acharya+Dr+Vivek+Panchtatw%29+Reviews&sa=X&ved=2ahUKEwjLpZaIp6mTAxUn4TgGHQlkB98Q0bkNegQIIhAH&biw=1440&bih=778&dpr=2"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="testi-google-btn"
+            >
+              <svg viewBox="0 0 24 24" className="google-icon" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+              </svg>
+              View Our Google Reviews
+              <span className="testi-btn-arrow">↗</span>
+            </a>
+          </div>
+        </Reveal>
       </div>
     </section>
   )
@@ -687,12 +915,12 @@ function Testimonials() {
 
 // Services
 const servicesData = [
-  { icon: '☿', title: 'Birth Chart Analysis', desc: 'A comprehensive reading of your Janma Kundali revealing personality, karmic patterns, and life\'s grand design through the lens of Vedic astrology.', link: 'Consult Now →' },
-  { icon: '🏛️', title: 'Vastu Audit', desc: 'On-site or remote evaluation of your home or office to harmonize spatial energies, attract abundance, and eliminate invisible obstacles.', link: 'Schedule Audit →' },
-  { icon: '⚏', title: 'Muhurta — Auspicious Timing', desc: 'Select the most fortuitous moment for weddings, business launches, property registration, or any significant life event.', link: 'Find Your Time →' },
-  { icon: '♃', title: 'Relationship Compatibility', desc: 'Kundali Milan and Guna matching to understand the cosmic bond between two souls—ideal for marriage and partnerships.', link: 'Check Compatibility →' },
-  { icon: '🏠', title: 'Vastu Remedies', desc: 'Practical, non-demolition solutions using yantras, mirrors, colours, and elemental placements to correct existing spatial imbalances.', link: 'Get Remedies →' },
-  { icon: '📜', title: 'Annual Forecast Report', desc: 'A detailed written Varshaphal report covering key planetary transits, dasha periods, and personalised guidance for the year ahead.', link: 'Order Report →' }
+  { Icon: BirthChartIcon, title: 'Birth Chart Analysis',        desc: "A comprehensive reading of your Janma Kundali revealing personality, karmic patterns, and life's grand design through the lens of Vedic astrology.", link: 'Consult Now →' },
+  { Icon: TempleIcon,     title: 'Vastu Audit',                 desc: 'On-site or remote evaluation of your home or office to harmonize spatial energies, attract abundance, and eliminate invisible obstacles.',        link: 'Schedule Audit →' },
+  { Icon: ClockIcon,      title: 'Muhurta — Auspicious Timing', desc: 'Select the most fortuitous moment for weddings, business launches, property registration, or any significant life event.',                         link: 'Find Your Time →' },
+  { Icon: RingsIcon,      title: 'Relationship Compatibility',  desc: 'Kundali Milan and Guna matching to understand the cosmic bond between two souls—ideal for marriage and partnerships.',                              link: 'Check Compatibility →' },
+  { Icon: WrenchIcon,     title: 'Vastu Remedies',              desc: 'Practical, non-demolition solutions using yantras, mirrors, colours, and elemental placements to correct existing spatial imbalances.',              link: 'Get Remedies →' },
+  { Icon: ScrollIcon,     title: 'Annual Forecast Report',      desc: 'A detailed written Varshaphal report covering key planetary transits, dasha periods, and personalised guidance for the year ahead.',                link: 'Order Report →' },
 ]
 
 function Services() {
@@ -703,14 +931,11 @@ function Services() {
           <p className="section-label">✦ What We Offer</p>
           <h2 className="section-title">Sacred <em>Services</em></h2>
           <div className="gold-divider" />
-          <p className="section-desc" style={{ textAlign: 'center', margin: '0 auto' }}>
-            Bridging the celestial and terrestrial—each offering is carefully crafted to illuminate your path.
-          </p>
         </Reveal>
         <StaggeredReveal className="services-grid">
           {servicesData.map((s, i) => (
             <div className="service-card" key={i}>
-              <span className="svc-icon">{s.icon}</span>
+              <span className="svc-icon"><s.Icon /></span>
               <h3 className="svc-title">{s.title}</h3>
               <p className="svc-desc">{s.desc}</p>
               <button className="svc-link" onClick={() => scrollToSection('booking')}>{s.link}</button>
@@ -744,21 +969,21 @@ function Booking() {
             </p>
 
             <div className="contact-item">
-              <div className="ci-icon">📍</div>
+              <div className="ci-icon"><LocationIcon /></div>
               <div>
                 <div className="ci-label">Location</div>
                 <div className="ci-val">23, Vastu Marg, Hauz Khas, New Delhi — 110016</div>
               </div>
             </div>
             <div className="contact-item">
-              <div className="ci-icon">📞</div>
+              <div className="ci-icon"><PhoneIcon /></div>
               <div>
                 <div className="ci-label">Phone</div>
                 <div className="ci-val">+91 98100 00000</div>
               </div>
             </div>
             <div className="contact-item">
-              <div className="ci-icon">✉️</div>
+              <div className="ci-icon"><EmailIcon /></div>
               <div>
                 <div className="ci-label">Email</div>
                 <div className="ci-val">consult@nidanguru.com</div>
@@ -766,7 +991,7 @@ function Booking() {
             </div>
 
             <button className="whatsapp-btn" onClick={() => {}}>
-              <span>💬</span> Chat on WhatsApp
+              <ChatIcon /> Chat on WhatsApp
             </button>
           </Reveal>
 
@@ -780,6 +1005,10 @@ function Booking() {
                 <div className="form-group">
                   <label>Email Address</label>
                   <input type="email" placeholder="you@example.com" />
+                </div>
+                <div className="form-group">
+                  <label>Phone Number</label>
+                  <input type="tel" placeholder="+91 00000 00000" />
                 </div>
                 <div className="form-group">
                   <label>Service Required</label>
@@ -829,7 +1058,7 @@ function Footer() {
     { label: 'Home', target: 'hero' },
     { label: 'About', target: 'about' },
     { label: 'Videos', target: 'videos' },
-    { label: 'Classes', target: 'class-banner' },
+    { label: 'Vastu', target: 'vastu' },
     { label: 'Testimonials', target: 'testimonials' },
     { label: 'Services', target: 'services' },
     { label: 'Book Now', target: 'booking' },
@@ -838,12 +1067,13 @@ function Footer() {
   return (
     <footer>
       <div className="section-wrap">
-        <div className="footer-logo">Nidan<span style={{ color: 'var(--white)' }}>Guru</span></div>
+        <div className="footer-logo">
+          <img src="/Logo.png" alt="NidanGuru" className="footer-logo-img" />
+        </div>
         <div className="footer-social">
-          <span className="soc" title="Instagram">𝕀</span>
-          <span className="soc" title="Facebook">𝔽</span>
-          <span className="soc" title="YouTube">▶</span>
-          <span className="soc" title="Twitter/X">𝕏</span>
+          <a className="soc" href="https://www.instagram.com/nidanguru" target="_blank" rel="noopener noreferrer" title="Instagram"><InstagramLogo /></a>
+          <a className="soc" href="https://www.facebook.com/nidanguru" target="_blank" rel="noopener noreferrer" title="Facebook"><FacebookLogo /></a>
+          <a className="soc" href="https://www.youtube.com/@nidanguru" target="_blank" rel="noopener noreferrer" title="YouTube"><YouTubeLogo /></a>
         </div>
         <div className="footer-links">
           {links.map(l => (
@@ -903,8 +1133,9 @@ export default function App() {
       <Hero />
       <StatsStrip />
       <About />
+      <Vastu />
+      <Classes />
       <Videos />
-      <ClassBanner />
       <Testimonials />
       <Services />
       <Booking />
