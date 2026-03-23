@@ -494,10 +494,13 @@ function About() {
               <h2 className="section-title">NidanGuru ~ Acharya Dr <em>Vivek Panchtatw</em></h2>
               <div className="gold-divider left" />
               <p className="section-desc" style={{ marginBottom: '1.5rem' }}>
-                A lineage-trained Vedic astrologer and Vastu consultant with over 20 years of dedicated practice. Acharyaji combines classical Parashari and Jaimini systems with deep intuitive insight, offering guidance that is both scripturally grounded and practically transformative.
+                A living embodiment of Sadhana and spiritual mastery, Acharya Dr Vivek Panchtatw bridges ancient wisdom with modern healing. With over 20 years of dedicated practice, he has mastered Astrology, Vastu, and Clinical Psychology. His path is shaped by intense Tapasya, Vedic knowledge, and profound Tantric awakening.
+              </p>
+              <p className="section-desc" style={{ marginBottom: '1.5rem' }}>
+                Through his Sadhana, he attained Siddhiyan that bring clarity and transformation to countless lives. His Five-Dimensional Approach (FDA) Therapy creates harmony between mind, energy, and destiny. A true guardian of the Guru-Shishya Parampara, he mentors seekers across the globe.
               </p>
               <p className="section-desc">
-                Having studied under revered Gurus across Varanasi and Haridwar, he brings rare depth to every consultation — whether it is a birth chart reading, a complex Muhurta, or a comprehensive Vastu audit for your home or business.
+                His guidance goes beyond prediction, offering deep correction and conscious alignment. Having impacted over 1 lakh lives, through The NIDAN he inspires individuals to rise, transform, and align with their highest potential.
               </p>
               <div className="credentials">
                 <div className="cred-item">
