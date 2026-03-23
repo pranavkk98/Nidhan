@@ -308,6 +308,7 @@ function StaggeredReveal({ children, className = '' }) {
 // Nav
 function Navbar() {
   const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80)
@@ -315,21 +316,47 @@ function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    document.body.classList.toggle('menu-open', menuOpen)
+    return () => document.body.classList.remove('menu-open')
+  }, [menuOpen])
+
+  const navTo = (id) => { scrollToSection(id); setMenuOpen(false) }
+
   return (
-    <nav className={scrolled ? 'nav-scrolled' : ''}>
-      <span className="nav-logo" onClick={() => scrollToSection('hero')}>
-        <img src="/Logo.png" alt="NidanGuru" className="nav-logo-img" />
-      </span>
-      <ul>
-        <li><button className="nav-link" onClick={() => scrollToSection('about')}>About</button></li>
-        <li><button className="nav-link" onClick={() => scrollToSection('videos')}>Videos</button></li>
-        <li><button className="nav-link" onClick={() => scrollToSection('vastu')}>Vastu</button></li>
-        <li><button className="nav-link" onClick={() => scrollToSection('classes')}>Classes</button></li>
-        <li><button className="nav-link" onClick={() => scrollToSection('testimonials')}>Testimonials</button></li>
-        <li><button className="nav-link" onClick={() => scrollToSection('services')}>Services</button></li>
-        <li><button className="nav-cta nav-link" onClick={() => scrollToSection('booking')}>Book Now</button></li>
-      </ul>
-    </nav>
+    <>
+      <nav className={`${scrolled ? 'nav-scrolled' : ''} ${menuOpen ? 'nav-open' : ''}`}>
+        <span className="nav-logo" onClick={() => navTo('hero')}>
+          <img src="/Logo.png" alt="NidanGuru" className="nav-logo-img" />
+        </span>
+        <ul className="nav-desktop-links">
+          <li><button className="nav-link" onClick={() => navTo('about')}>About</button></li>
+          <li><button className="nav-link" onClick={() => navTo('vastu')}>Vastu</button></li>
+          <li><button className="nav-link" onClick={() => navTo('classes')}>Classes</button></li>
+          <li><button className="nav-link" onClick={() => navTo('videos')}>Videos</button></li>
+          <li><button className="nav-link" onClick={() => navTo('testimonials')}>Testimonials</button></li>
+          <li><button className="nav-link" onClick={() => navTo('services')}>Services</button></li>
+          <li><button className="nav-cta nav-link" onClick={() => navTo('booking')}>Book Now</button></li>
+        </ul>
+        <button className="nav-burger" aria-label="Toggle menu" onClick={() => setMenuOpen(o => !o)}>
+          <span /><span /><span />
+        </button>
+      </nav>
+      {menuOpen && (
+        <div className="nav-mobile-menu">
+          <button className="nav-mobile-close" aria-label="Close menu" onClick={() => setMenuOpen(false)}>&#x2715;</button>
+          <ul>
+            <li><button className="nav-link" onClick={() => navTo('about')}>About</button></li>
+            <li><button className="nav-link" onClick={() => navTo('vastu')}>Vastu</button></li>
+            <li><button className="nav-link" onClick={() => navTo('classes')}>Classes</button></li>
+            <li><button className="nav-link" onClick={() => navTo('videos')}>Videos</button></li>
+            <li><button className="nav-link" onClick={() => navTo('testimonials')}>Testimonials</button></li>
+            <li><button className="nav-link" onClick={() => navTo('services')}>Services</button></li>
+            <li><button className="nav-cta nav-link" onClick={() => navTo('booking')}>Book Now</button></li>
+          </ul>
+        </div>
+      )}
+    </>
   )
 }
 

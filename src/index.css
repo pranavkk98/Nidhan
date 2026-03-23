@@ -42,7 +42,7 @@ body {
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
-  z-index: 100;
+  z-index: 300;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -75,7 +75,7 @@ nav {
   filter: drop-shadow(0 0 6px rgba(242,101,34,0.3));
 }
 
-nav ul {
+nav ul, .nav-desktop-links {
   list-style: none;
   display: flex;
   align-items: center;
@@ -97,6 +97,30 @@ nav a, nav button.nav-link {
   font-weight: 300;
 }
 nav a:hover, nav button.nav-link:hover { color: var(--gold-light); }
+
+/* BURGER MENU */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+  z-index: 110;
+}
+.nav-burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.nav-open .nav-burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-open .nav-burger span:nth-child(2) { opacity: 0; }
+.nav-open .nav-burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 .nav-cta {
   background: transparent !important;
@@ -2096,9 +2120,72 @@ nav button.nav-link:hover::after { width: 100%; left: 0; }
 .wa-chat-link svg { width: 16px; height: 16px; fill: #fff; flex-shrink: 0; }
 
 /* RESPONSIVE — TABLET ≤ 900px */
+/* Date input calendar icon colour */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(70%) sepia(60%) saturate(400%) hue-rotate(5deg) brightness(110%);
+  cursor: pointer;
+}
+
+/* Mobile full-screen menu — outside nav to avoid backdrop-filter trap */
+.nav-mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #0a0e1a;
+  z-index: 200;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: menuFadeIn 0.22s ease forwards;
+}
+@keyframes menuFadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.nav-mobile-menu ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+.nav-mobile-close {
+  position: absolute;
+  top: 1.4rem;
+  right: 1.6rem;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0.4rem;
+  transition: color 0.2s;
+}
+.nav-mobile-close:hover { color: var(--gold-light); }
+.nav-mobile-menu ul li button.nav-link {
+  font-size: 1.1rem;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.nav-mobile-menu ul li button.nav-link:hover {
+  color: var(--gold-light);
+  background: none;
+}
+.nav-mobile-menu .nav-cta {
+  padding: 0.8rem 2.5rem !important;
+  font-size: 0.85rem !important;
+}
+body.menu-open { overflow: hidden; }
+
 @media (max-width: 900px) {
-  nav ul { display: none; }
   nav { padding: 1.2rem 1.5rem; }
+  .nav-burger { display: flex; }
+  .nav-desktop-links { display: none; }
+  .nav-mobile-menu { display: flex; }
 
   .services-grid,
   .testi-grid,
@@ -2118,6 +2205,17 @@ nav button.nav-link:hover::after { width: 100%; left: 0; }
   .credentials { grid-template-columns: 1fr 1fr; gap: 1rem; }
   .services-grid { grid-template-columns: 1fr 1fr; }
   .service-card { padding: 2.4rem 2rem; }
+
+  /* Tantra section tablet */
+  .tantra-section-full { min-height: unset; }
+  .tantra-img-side { width: 48%; }
+  .tantra-content-side { width: 56%; padding: 5rem 5% 5rem 2rem; }
+
+  /* Classes tablet */
+  .classes-grid { grid-template-columns: 1fr 1fr; max-width: 100%; }
+
+  /* Social strip tablet */
+  .socials-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* RESPONSIVE — LARGE MOBILE ≤ 768px */
@@ -2152,6 +2250,27 @@ nav button.nav-link:hover::after { width: 100%; left: 0; }
 @media (max-width: 480px) {
   nav { padding: 1rem 1.2rem; }
   .nav-logo { font-size: 1.2rem; }
+
+  /* Classes single col */
+  .classes-grid { grid-template-columns: 1fr; max-width: 100%; }
+
+  /* Tantra full stack */
+  .tantra-section-full { flex-direction: column; }
+  .tantra-img-side { position: relative; width: 100%; height: 320px; }
+  .tantra-img-fade { background: linear-gradient(to bottom, transparent 40%, #070a12 100%); }
+  .tantra-content-side { width: 100%; padding: 2.5rem 1.5rem 3.5rem; border-left: none; margin-left: 0; }
+  .tantra-badges--full { justify-content: flex-start; }
+  .tantra-cta { align-self: flex-start; }
+
+  /* Services single col */
+  .services-grid { grid-template-columns: 1fr; }
+
+  /* Social strip single col */
+  .socials-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Booking form full width */
+  .booking-form { padding: 2rem 1.2rem; }
+  .form-row { grid-template-columns: 1fr; }
 
   #hero { padding: 4.5rem 1.2rem 7rem; }
   .hero-eyebrow { font-size: 0.62rem; letter-spacing: 0.2em; margin-bottom: 1.2rem; }
