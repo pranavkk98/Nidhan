@@ -1,4 +1,6 @@
-import { useState, useEffect, useRef, useCallback, useMemo, forwardRef } from 'react'
+import { useState, useEffect, useRef, forwardRef } from 'react'
+import 'lite-youtube-embed/src/lite-yt-embed.css'
+import 'lite-youtube-embed'
 
 const WhatsAppIcon = () => (
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -6,11 +8,6 @@ const WhatsAppIcon = () => (
   </svg>
 )
 
-const PlayIcon = () => (
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <polygon points="8,5 19,12 8,19" />
-  </svg>
-)
 
 // Custom golden SVG icon set
 const L = { strokeWidth:'1.5', strokeLinecap:'round', strokeLinejoin:'round', fill:'none', stroke:'currentColor' }
@@ -27,10 +24,10 @@ const ShareIcon     = () => <svg className="icon-svg" viewBox="0 0 24 24" {...L}
 const BirthChartIcon= () => <svg className="icon-svg" viewBox="0 0 24 24" {...L}><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="12" y1="15" x2="12" y2="22"/><line x1="2" y1="12" x2="9" y2="12"/><line x1="15" y1="12" x2="22" y2="12"/></svg>
 const TempleIcon    = () => <svg className="icon-svg" viewBox="0 0 24 24" {...L}><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12,2 20,7 4,7"/></svg>
 const ClockIcon     = () => <svg className="icon-svg" viewBox="0 0 24 24" {...L}><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
-const RingsIcon     = () => <svg className="icon-svg" viewBox="0 0 24 24" {...L}><circle cx="9" cy="12" r="5"/><circle cx="15" cy="12" r="5"/></svg>
 const WrenchIcon    = () => <svg className="icon-svg" viewBox="0 0 24 24" {...L}><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
 const NumbersIcon   = () => <svg className="icon-svg" viewBox="0 0 24 24" {...L}><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg>
 const SparkIcon     = () => <svg className="icon-svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2l1.68 8.32L22 12l-8.32 1.68L12 22l-1.68-8.32L2 12l8.32-1.68z"/></svg>
+const LotusIcon     = () => <svg className="icon-svg" viewBox="0 0 24 24" {...L}><path d="M12 22c0 0-7-4.5-7-10a7 7 0 0 1 7-7 7 7 0 0 1 7 7c0 5.5-7 10-7 10z"/><path d="M12 5C12 5 8 3 5 5c0 4 3 6 7 7"/><path d="M12 5c0 0 4-2 7 0c0 4-3 6-7 7"/><line x1="12" y1="12" x2="12" y2="22"/></svg>
 
 function scrollToSection(id) {
   const el = document.getElementById(id)
@@ -307,47 +304,6 @@ function StaggeredReveal({ children, className = '' }) {
   return <div ref={ref} className={`stagger-parent ${className}`}>{children}</div>
 }
 
-// Count-up hook (P2)
-function useCountUp(target, duration = 1800, delay = 0) {
-  const [count, setCount] = useState(0)
-  const [started, setStarted] = useState(false)
-  const ref = useRef(null)
-
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setStarted(true)
-          observer.unobserve(el)
-        }
-      },
-      { threshold: 0.3 }
-    )
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
-
-  useEffect(() => {
-    if (!started) return
-    let animId
-    const start = performance.now() + delay
-
-    function tick(now) {
-      const elapsed = now - start
-      if (elapsed < 0) { animId = requestAnimationFrame(tick); return }
-      const t = Math.min(elapsed / duration, 1)
-      const eased = 1 - (1 - t) * (1 - t) // easeOutQuad
-      setCount(Math.round(eased * target))
-      if (t < 1) animId = requestAnimationFrame(tick)
-    }
-    animId = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(animId)
-  }, [started, target, duration, delay])
-
-  return { ref, count }
-}
 
 // Nav
 function Navbar() {
@@ -378,7 +334,7 @@ function Navbar() {
 }
 
 // Mandala SVG
-const MandalaSVG = forwardRef(function MandalaSVG(props, ref) {
+const MandalaSVG = forwardRef(function MandalaSVG(_, ref) {
   return (
     <svg className="mandala" ref={ref} viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="200" cy="200" r="190" stroke="#c9a84c" strokeWidth="0.5"/>
@@ -476,11 +432,6 @@ const YouTubeLogo = () => (
   </svg>
 )
 
-const XLogo = () => (
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="social-svg">
-    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-  </svg>
-)
 
 const LinkedInLogo = () => (
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="social-svg">
@@ -580,25 +531,19 @@ function About() {
 // Videos
 const videosData = [
   {
-    id: 'video1',
-    thumb: 'https://img.youtube.com/vi/Owul1HlA-ss/maxresdefault.jpg',
-    url: 'https://youtu.be/Owul1HlA-ss',
+    ytId: 'Owul1HlA-ss',
     tag: 'Vastu Shastra',
     title: 'Vastu Dose ~ Best Entry of the Property',
     desc: 'Discover the most auspicious entry directions for your property and how the right entrance can transform the flow of energy in your home or office.',
   },
   {
-    id: 'video2',
-    thumb: 'https://img.youtube.com/vi/PSmclVas4wE/maxresdefault.jpg',
-    url: 'https://youtu.be/PSmclVas4wE',
+    ytId: 'PSmclVas4wE',
     tag: 'Vedic Astrology',
     title: 'Learn Astrology in Expert Guidance: Unlock the Secrets of the Stars',
     desc: 'Acharya Dr Vivek Panchtatw takes you on a journey through Vedic Astrology — decoding planetary wisdom and empowering you to read the language of the cosmos.',
   },
   {
-    id: 'video3',
-    thumb: 'https://img.youtube.com/vi/1SuijLdJ6Co/maxresdefault.jpg',
-    url: 'https://youtu.be/1SuijLdJ6Co',
+    ytId: '1SuijLdJ6Co',
     tag: 'Tantra',
     title: 'Navratri Tantra Sadhana and the 8th House',
     desc: 'An in-depth exploration of Navratri Tantra Sadhana and the mystical significance of the 8th house in Vedic Astrology — for sincere seekers on the spiritual path.',
@@ -616,23 +561,14 @@ function Videos() {
         </Reveal>
         <StaggeredReveal className="videos-grid">
           {videosData.map(v => (
-            <a className="video-card" key={v.id} href={v.url} target="_blank" rel="noopener noreferrer">
-              <div className="video-thumb">
-                <img
-                  src={v.thumb}
-                  alt={v.title}
-                  onError={(e) => { e.target.src = `https://placehold.co/640x360/111827/c9a84c?text=${encodeURIComponent(v.tag)}` }}
-                />
-                <div className="video-play">
-                  <div className="play-btn"><PlayIcon /></div>
-                </div>
-              </div>
+            <div className="video-card" key={v.ytId}>
+              <lite-youtube videoid={v.ytId} style={{ borderRadius: '0' }} />
               <div className="video-body">
                 <p className="video-tag">{v.tag}</p>
                 <h3 className="video-title">{v.title}</h3>
                 <p className="video-desc">{v.desc}</p>
               </div>
-            </a>
+            </div>
           ))}
         </StaggeredReveal>
         <Reveal>
@@ -644,6 +580,23 @@ function Videos() {
         </Reveal>
       </div>
     </section>
+  )
+}
+
+const reelVideos = ['/Vastu-offline-2-opt.mp4', '/Vastu-offline-opt.mp4']
+
+function ReelPlayer() {
+  const [idx, setIdx] = useState(0)
+  return (
+    <video
+      key={idx}
+      src={reelVideos[idx]}
+      autoPlay
+      muted
+      playsInline
+      onEnded={() => setIdx(i => (i + 1) % reelVideos.length)}
+      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+    />
   )
 }
 
@@ -687,14 +640,7 @@ function Vastu() {
             <div className="vastu-reel-wrap">
               <div className="vastu-reel-phone">
                 <div className="vastu-reel-screen">
-                  <video
-                    src="/Vastu-offline.mp4"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                  />
+                  <ReelPlayer />
                   <div className="vastu-reel-overlay">
                     <div className="vastu-reel-user">
                       <div className="vastu-reel-avatar">NG</div>
@@ -963,7 +909,7 @@ const servicesData = [
   { Icon: TempleIcon,     title: 'Vastu Audit',                 desc: 'On-site or remote evaluation of your home or office to harmonise spatial energies, attract abundance, and eliminate invisible obstacles.',           link: 'Schedule Audit →' },
   { Icon: BirthChartIcon, title: 'Astrology',                   desc: "A deep Vedic reading of your Janma Kundali — uncovering personality, karmic patterns, dasha cycles, and the grand design of your life's journey.",  link: 'Consult Now →' },
   { Icon: SparkIcon,      title: 'Tantra',                      desc: 'Sacred Tantric guidance rooted in authentic Guru–Shishya Parampara. Acharya Ji holds rare knowledge of 10 Mahavidyas — offered with full discretion.', link: 'Enquire Privately →' },
-  { Icon: RingsIcon,      title: 'Relationship Compatibility',  desc: 'Kundali Milan and Guna matching to understand the cosmic bond between two souls — ideal for marriage decisions and life partnerships.',               link: 'Check Compatibility →' },
+  { Icon: LotusIcon,      title: 'Mind & Energy',               desc: 'Transformative healing through Clinical Hypnosis, NLP, Reiki, and Past Life Regression — addressing deep-rooted blocks and unlocking your highest potential.',  link: 'Explore Healing →' },
   { Icon: ClockIcon,      title: 'Muhurta — Auspicious Timing', desc: 'Select the most fortuitous moment for weddings, business launches, property registration, or any significant life event.',                           link: 'Find Your Time →' },
   { Icon: WrenchIcon,     title: 'Vastu Remedies',              desc: 'Practical, non-demolition solutions using yantras, mirrors, colours, and elemental placements to correct existing spatial imbalances.',               link: 'Get Remedies →' },
 ]
@@ -1059,7 +1005,7 @@ function Booking() {
                     <option>Birth Chart Analysis</option>
                     <option>Vastu Audit (Home / Office)</option>
                     <option>Muhurta — Auspicious Timing</option>
-                    <option>Relationship Compatibility</option>
+                    <option>Mind & Energy</option>
                     <option>Annual Forecast Report</option>
                     <option>Both Astrology &amp; Vastu</option>
                   </select>
@@ -1158,9 +1104,9 @@ function WhatsAppToggle() {
           <WhatsAppIcon /> Chat Now
         </a>
       </div>
-      <button id="wa-bubble" aria-label="Chat on WhatsApp" onClick={() => setOpen(o => !o)}>
+      <a id="wa-bubble" aria-label="Chat on WhatsApp" href="https://wa.me/916399105666?text=Namaste%2C%20I%20would%20like%20to%20know%20more%20about%20your%20Vedic%20Astrology%20services." target="_blank" rel="noopener noreferrer">
         <WhatsAppIcon />
-      </button>
+      </a>
     </div>
   )
 }
