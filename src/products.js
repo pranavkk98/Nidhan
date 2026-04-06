@@ -15,7 +15,7 @@ export const products = [
     description: 'Natural amethyst for peace, meditation and spiritual clarity. Calms the mind and enhances intuition.',
     category: 'Crystals & Gemstones',
     price: '₹1,299',
-    image: 'https://images.unsplash.com/photo-FwDuF0KHRrc?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1567954970774-58d6aa6c50dc?w=400&h=400&fit=crop',
     amazonUrl: 'https://www.amazon.in',
   },
   {
@@ -24,7 +24,7 @@ export const products = [
     description: 'The master healer. Amplifies energy, intention and the effect of other crystals.',
     category: 'Crystals & Gemstones',
     price: '₹999',
-    image: 'https://images.unsplash.com/photo-ymQlshzTVv0?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?w=400&h=400&fit=crop',
     amazonUrl: 'https://www.amazon.in',
   },
   {
@@ -33,7 +33,7 @@ export const products = [
     description: 'Stone of unconditional love. Brings harmony, compassion and emotional healing.',
     category: 'Crystals & Gemstones',
     price: '₹749',
-    image: 'https://images.unsplash.com/photo-SSoCY-Xi3iY?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1596394723269-b2cbca4e6313?w=400&h=400&fit=crop',
     amazonUrl: 'https://www.amazon.in',
   },
   {
@@ -42,7 +42,7 @@ export const products = [
     description: 'Powerful protection stone. Shields against negative energy and electromagnetic radiation.',
     category: 'Crystals & Gemstones',
     price: '₹899',
-    image: 'https://images.unsplash.com/photo-9R2hJWMMByY?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1582126892906-0ef8f9dfe635?w=400&h=400&fit=crop',
     amazonUrl: 'https://www.amazon.in',
   },
 
@@ -53,7 +53,7 @@ export const products = [
     description: 'Most auspicious and common bead. Represents Lord Shiva, promotes health, peace and spiritual growth.',
     category: 'Rudraksha',
     price: '₹599',
-    image: 'https://images.unsplash.com/photo-kWy9W9rPRJ0?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1508672019048-805c876b67e2?w=400&h=400&fit=crop',
     amazonUrl: 'https://www.amazon.in',
   },
   {
@@ -62,7 +62,7 @@ export const products = [
     description: 'Extremely rare and powerful. Represents pure consciousness, ideal for deep meditation and liberation.',
     category: 'Rudraksha',
     price: '₹4,999',
-    image: 'https://images.unsplash.com/photo-S_HfQaz9Peo?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1545579133-99bb5ad189be?w=400&h=400&fit=crop',
     amazonUrl: 'https://www.amazon.in',
   },
   {
@@ -71,7 +71,7 @@ export const products = [
     description: 'Awakens the third eye. Sharpens intuition, decision-making and opens the Ajna chakra.',
     category: 'Rudraksha',
     price: '₹2,499',
-    image: 'https://images.unsplash.com/photo-MRHavETWyv4?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1474552226712-ac0e0c4a3314?w=400&h=400&fit=crop',
     amazonUrl: 'https://www.amazon.in',
   },
 
@@ -82,7 +82,7 @@ export const products = [
     description: 'Sacred geometry of the Goddess Lakshmi. Attracts wealth, abundance and cosmic harmony.',
     category: 'Yantras',
     price: '₹1,499',
-    image: 'https://images.unsplash.com/photo-GsRaiFdcTY4?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=400&h=400&fit=crop',
     amazonUrl: 'https://www.amazon.in',
   },
   {
@@ -91,7 +91,7 @@ export const products = [
     description: 'Corrects Vastu doshas and brings positive energy, prosperity and peace to your home.',
     category: 'Yantras',
     price: '₹1,199',
-    image: 'https://images.unsplash.com/photo-pGoITI0Xo7Q?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1553356084-58ef4a67b2a7?w=400&h=400&fit=crop',
     amazonUrl: 'https://www.amazon.in',
   },
   {
@@ -100,7 +100,7 @@ export const products = [
     description: 'Balances the influence of all nine planets. Reduces malefic effects and strengthens benefic ones.',
     category: 'Yantras',
     price: '₹1,799',
-    image: 'https://images.unsplash.com/photo-EZ8Y4L8LumE?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=400&h=400&fit=crop',
     amazonUrl: 'https://www.amazon.in',
   },
 
@@ -111,7 +111,7 @@ export const products = [
     description: 'The foundational text of Vedic astrology. An essential reference for students and practitioners.',
     category: 'Books & Scriptures',
     price: '₹849',
-    image: 'https://images.unsplash.com/photo-6hOlSAQ-L98?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=400&fit=crop',
     amazonUrl: 'https://www.amazon.in',
   },
   {
@@ -120,7 +120,7 @@ export const products = [
     description: 'A comprehensive guide to Vedic architecture and spatial harmony for modern homes.',
     category: 'Books & Scriptures',
     price: '₹699',
-    image: 'https://images.unsplash.com/photo-9T346Ij4kGk?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=400&fit=crop',
     amazonUrl: 'https://www.amazon.in',
   },
 
@@ -131,7 +131,7 @@ export const products = [
     description: 'Complete handcrafted copper thali set for daily rituals and worship ceremonies.',
     category: 'Puja Items',
     price: '₹1,099',
-    image: 'https://images.unsplash.com/photo-C0mwgZ7XafU?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1604608672516-5b8e5ecfe7c9?w=400&h=400&fit=crop',
     amazonUrl: 'https://www.amazon.in',
   },
   {
@@ -140,7 +140,7 @@ export const products = [
     description: 'Pure cow-dung and herb-based dhoop sticks for purifying spaces and creating sacred atmosphere.',
     category: 'Puja Items',
     price: '₹299',
-    image: 'https://images.unsplash.com/photo-_12PwFpWZZ0?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1602928321679-560bb453f190?w=400&h=400&fit=crop',
     amazonUrl: 'https://www.amazon.in',
   },
   {
@@ -149,7 +149,7 @@ export const products = [
     description: 'Traditional brass oil lamps, handcrafted for puja, festivals and meditation practice.',
     category: 'Puja Items',
     price: '₹549',
-    image: 'https://images.unsplash.com/photo-zNY2lVIRh7M?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=400&h=400&fit=crop',
     amazonUrl: 'https://www.amazon.in',
   },
 ]

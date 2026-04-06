@@ -2439,7 +2439,7 @@ body.mkt-mode #stars { display: none; }
   border-bottom: 1px solid rgba(201,168,76,0.1);
   position: relative;
   overflow: hidden;
-  background-image: url('https://images.unsplash.com/photo-g2VBsOPD4T8?w=1400&fit=crop&q=80');
+  background-image: url('https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=1400&h=700&fit=crop&q=80');
   background-size: cover;
   background-position: center;
 }
@@ -2449,10 +2449,10 @@ body.mkt-mode #stars { display: none; }
   inset: 0;
   background:
     linear-gradient(180deg,
-      rgba(10,14,26,0.82) 0%,
-      rgba(10,14,26,0.65) 40%,
-      rgba(10,14,26,0.88) 100%),
-    radial-gradient(ellipse 60% 50% at 50% 50%, rgba(212,168,67,0.1) 0%, transparent 70%);
+      rgba(10,14,26,0.75) 0%,
+      rgba(10,14,26,0.45) 45%,
+      rgba(10,14,26,0.80) 100%),
+    radial-gradient(ellipse 70% 60% at 50% 50%, rgba(212,168,67,0.12) 0%, transparent 65%);
   pointer-events: none;
 }
 .mkt-hero-inner { position: relative; z-index: 1; }

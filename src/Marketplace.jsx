@@ -95,6 +95,7 @@ export default function Marketplace() {
                       <img
                         src={product.image}
                         alt={product.name}
+                        onError={e => { e.target.src = `https://picsum.photos/seed/${product.id}/400/400` }}
                         className="mkt-card-img"
                         loading="lazy"
                       />
