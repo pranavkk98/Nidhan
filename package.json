@@ -13,6 +13,7 @@
     "lite-youtube-embed": "^0.3.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-router-dom": "^7.13.2",
     "remotion": "^4.0.438"
   },
   "devDependencies": {

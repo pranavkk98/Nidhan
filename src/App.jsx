@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef, forwardRef } from 'react'
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom'
+import Marketplace from './Marketplace'
 import 'lite-youtube-embed/src/lite-yt-embed.css'
 import 'lite-youtube-embed'
 
@@ -58,7 +60,7 @@ function useStarCanvas() {
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
           r: Math.random() * 1.4 + 0.4,
-          baseAlpha: Math.random() * 0.45 + 0.35,
+          baseAlpha: Math.random() * 0.2 + 0.1,
           speed: Math.random() * 0.005 + 0.002,
           phase: Math.random() * Math.PI * 2,
           gold: Math.random() > 0.3
@@ -69,7 +71,7 @@ function useStarCanvas() {
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
           r: Math.random() * 2.2 + 1.2,
-          baseAlpha: Math.random() * 0.45 + 0.40,
+          baseAlpha: Math.random() * 0.2 + 0.15,
           speed: Math.random() * 0.004 + 0.001,
           phase: Math.random() * Math.PI * 2,
           gold: true,
@@ -306,9 +308,12 @@ function StaggeredReveal({ children, className = '' }) {
 
 
 // Nav
-function Navbar() {
+function Navbar({ bannerVisible }) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const navigate = useNavigate()
+  const location = useLocation()
+  const onHome = location.pathname === '/'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80)
@@ -321,12 +326,21 @@ function Navbar() {
     return () => document.body.classList.remove('menu-open')
   }, [menuOpen])
 
-  const navTo = (id) => { scrollToSection(id); setMenuOpen(false) }
+  const navTo = (id) => {
+    setMenuOpen(false)
+    if (onHome) {
+      scrollToSection(id)
+    } else {
+      window.location.href = '/#' + id
+    }
+  }
+
+  const goMarketplace = () => { navigate('/marketplace'); setMenuOpen(false) }
 
   return (
     <>
-      <nav className={`${scrolled ? 'nav-scrolled' : ''} ${menuOpen ? 'nav-open' : ''}`}>
-        <span className="nav-logo" onClick={() => navTo('hero')}>
+      <nav className={`${scrolled ? 'nav-scrolled' : ''} ${menuOpen ? 'nav-open' : ''}`} style={{ top: bannerVisible ? 'var(--banner-h)' : '0' }}>
+        <span className="nav-logo" onClick={() => onHome ? navTo('hero') : navigate('/')}>
           <img src="/Logo.png" alt="NidanGuru" className="nav-logo-img" />
         </span>
         <ul className="nav-desktop-links">
@@ -336,6 +350,7 @@ function Navbar() {
           <li><button className="nav-link" onClick={() => navTo('videos')}>Videos</button></li>
           <li><button className="nav-link" onClick={() => navTo('testimonials')}>Testimonials</button></li>
           <li><button className="nav-link" onClick={() => navTo('services')}>Services</button></li>
+          <li><button className="nav-link nav-link--market" onClick={goMarketplace}>Marketplace<span className="nav-dot" /></button></li>
           <li><button className="nav-cta nav-link" onClick={() => navTo('booking')}>Book Now</button></li>
         </ul>
         <button className="nav-burger" aria-label="Toggle menu" onClick={() => setMenuOpen(o => !o)}>
@@ -343,7 +358,7 @@ function Navbar() {
         </button>
       </nav>
       {menuOpen && (
-        <div className="nav-mobile-menu">
+        <div className="nav-mobile-menu" style={{ top: bannerVisible ? 'var(--banner-h)' : '0' }}>
           <button className="nav-mobile-close" aria-label="Close menu" onClick={() => setMenuOpen(false)}>&#x2715;</button>
           <ul>
             <li><button className="nav-link" onClick={() => navTo('about')}>About</button></li>
@@ -352,6 +367,7 @@ function Navbar() {
             <li><button className="nav-link" onClick={() => navTo('videos')}>Videos</button></li>
             <li><button className="nav-link" onClick={() => navTo('testimonials')}>Testimonials</button></li>
             <li><button className="nav-link" onClick={() => navTo('services')}>Services</button></li>
+            <li><button className="nav-link nav-link--market" onClick={goMarketplace}>Marketplace<span className="nav-dot" /></button></li>
             <li><button className="nav-cta nav-link" onClick={() => navTo('booking')}>Book Now</button></li>
           </ul>
         </div>
@@ -974,6 +990,7 @@ function Booking() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    if (typeof gtag === 'function') gtag('event', 'ads_conversion_Form_1', {})
     setSubmitted(true)
   }
 
@@ -1130,25 +1147,23 @@ function WhatsAppToggle() {
           href="https://wa.me/916399105666?text=Namaste%2C%20I%20would%20like%20to%20know%20more%20about%20your%20Vedic%20Astrology%20services."
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => { if (typeof gtag === 'function') gtag('event', 'ads_conversion_Contact_1', {}) }}
         >
           <WhatsAppIcon /> Chat Now
         </a>
       </div>
-      <a id="wa-bubble" aria-label="Chat on WhatsApp" href="https://wa.me/916399105666?text=Namaste%2C%20I%20would%20like%20to%20know%20more%20about%20your%20Vedic%20Astrology%20services." target="_blank" rel="noopener noreferrer">
+      <a id="wa-bubble" aria-label="Chat on WhatsApp" href="https://wa.me/916399105666?text=Namaste%2C%20I%20would%20like%20to%20know%20more%20about%20your%20Vedic%20Astrology%20services." target="_blank" rel="noopener noreferrer"
+        onClick={() => { if (typeof gtag === 'function') gtag('event', 'ads_conversion_Contact_1', {}) }}>
         <WhatsAppIcon />
       </a>
     </div>
   )
 }
 
-// App
-export default function App() {
-  const starCanvasRef = useStarCanvas()
-
+// Home page
+function HomePage() {
   return (
     <>
-      <canvas id="stars" ref={starCanvasRef} />
-      <Navbar />
       <Hero />
       <StatsStrip />
       <About />
@@ -1159,6 +1174,45 @@ export default function App() {
       <Testimonials />
       <Services />
       <Booking />
+    </>
+  )
+}
+
+// App
+// Promo Banner — update text/link here for new launches
+const PROMO = {
+  label: 'New Launch',
+  text: 'Shri Yantra Copper Plate — Limited Edition now available',
+  cta: 'Shop Now',
+  link: '/marketplace',
+}
+
+function PromoBanner({ onClose }) {
+  return (
+    <div className="promo-banner">
+      <div className="promo-banner-inner">
+        <span className="promo-badge">{PROMO.label}</span>
+        <p className="promo-text">{PROMO.text}</p>
+        <a className="promo-cta" href={PROMO.link}>{PROMO.cta} →</a>
+      </div>
+      <button className="promo-close" onClick={onClose} aria-label="Dismiss">✕</button>
+    </div>
+  )
+}
+
+export default function App() {
+  const starCanvasRef = useStarCanvas()
+  const [promoBanner, setPromoBanner] = useState(true)
+
+  return (
+    <>
+      <canvas id="stars" ref={starCanvasRef} />
+      {promoBanner && <PromoBanner onClose={() => setPromoBanner(false)} />}
+      <Navbar bannerVisible={promoBanner} />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/marketplace" element={<Marketplace />} />
+      </Routes>
       <Footer />
       <WhatsAppToggle />
     </>
