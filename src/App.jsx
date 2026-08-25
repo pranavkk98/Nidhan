@@ -1,6 +1,10 @@
 import { useState, useEffect, useRef, forwardRef } from 'react'
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom'
 import Marketplace from './Marketplace'
+import BookingCalendar from './BookingCalendar'
+
+let _openBooking = () => {}
+function openBooking() { _openBooking() }
 import 'lite-youtube-embed/src/lite-yt-embed.css'
 import 'lite-youtube-embed'
 
@@ -351,7 +355,7 @@ function Navbar({ bannerVisible }) {
           <li><button className="nav-link" onClick={() => navTo('testimonials')}>Testimonials</button></li>
           <li><button className="nav-link" onClick={() => navTo('services')}>Services</button></li>
           <li><button className="nav-link nav-link--market" onClick={goMarketplace}>Marketplace<span className="nav-dot" /></button></li>
-          <li><button className="nav-cta nav-link" onClick={() => navTo('booking')}>Book Now</button></li>
+          <li><button className="nav-cta nav-link" onClick={openBooking}>Book Now</button></li>
         </ul>
         <button className="nav-burger" aria-label="Toggle menu" onClick={() => setMenuOpen(o => !o)}>
           <span /><span /><span />
@@ -368,7 +372,7 @@ function Navbar({ bannerVisible }) {
             <li><button className="nav-link" onClick={() => navTo('testimonials')}>Testimonials</button></li>
             <li><button className="nav-link" onClick={() => navTo('services')}>Services</button></li>
             <li><button className="nav-link nav-link--market" onClick={goMarketplace}>Marketplace<span className="nav-dot" /></button></li>
-            <li><button className="nav-cta nav-link" onClick={() => navTo('booking')}>Book Now</button></li>
+            <li><button className="nav-cta nav-link" onClick={() => { setMenuOpen(false); openBooking() }}>Book Now</button></li>
           </ul>
         </div>
       )}
@@ -444,7 +448,7 @@ function Hero() {
           Ancient Wisdom, <em>Modern Living,</em>
         </h1>
 <div className="hero-btns">
-          <button className="btn-primary" onClick={() => scrollToSection('booking')}>Seek Your Nidan</button>
+          <button className="btn-primary" onClick={openBooking}>Seek Your Nidan</button>
           <button className="btn-ghost" onClick={() => scrollToSection('services')}>Explore Services</button>
         </div>
       </div>
@@ -563,7 +567,7 @@ function About() {
                   <span>Prashna Shastra, Medical Astrology, Jaimini etc.</span>
                 </div>
               </div>
-              <button className="btn-primary" style={{ marginTop: '2.5rem' }} onClick={() => scrollToSection('booking')}>
+              <button className="btn-primary" style={{ marginTop: '2.5rem' }} onClick={openBooking}>
                 Book with NidanGuru
               </button>
             </div>
@@ -786,7 +790,7 @@ function ClassCard({ data }) {
           <span><CalendarIcon /> {data.duration}</span>
           <span><LocationIcon /> {data.mode}</span>
         </div>
-        <button className="class-enrol-btn class-enrol-btn--tantra" onClick={() => scrollToSection('booking')}>
+        <button className="class-enrol-btn class-enrol-btn--tantra" onClick={openBooking}>
           ✦ Request Audience
         </button>
       </div>
@@ -821,7 +825,7 @@ function ClassCard({ data }) {
       </div>
       <button
         className={`class-enrol-btn ${isFull ? 'class-enrol-btn--disabled' : ''}`}
-        onClick={() => !isFull && scrollToSection('booking')}
+        onClick={() => !isFull && openBooking()}
         disabled={isFull}
       >
         {isFull ? '✦ Join the Waitlist' : (data.cta || '✦ Enrol Now')}
@@ -863,7 +867,7 @@ function TantraSection() {
         <p className="tantra-full-desc">
           A sacred Guru–Shishya Parampara. Acharyaji has acquired the rare knowledge of 10 Mahavidya Tantra — passed only one-on-one, as it has been for centuries. The identity of every student remains 100% private.
         </p>
-        <button className="class-enrol-btn class-enrol-btn--tantra tantra-cta" onClick={() => scrollToSection('booking')}>
+        <button className="class-enrol-btn class-enrol-btn--tantra tantra-cta" onClick={openBooking}>
           ✦ Seek the Guru's Grace
         </button>
         {/* Bottom ornament */}
@@ -975,7 +979,7 @@ function Services() {
               <span className="svc-icon"><s.Icon /></span>
               <h3 className="svc-title">{s.title}</h3>
               <p className="svc-desc">{s.desc}</p>
-              <button className="svc-link" onClick={() => scrollToSection('booking')}>{s.link}</button>
+              <button className="svc-link" onClick={openBooking}>{s.link}</button>
             </div>
           ))}
         </StaggeredReveal>
@@ -987,10 +991,33 @@ function Services() {
 // Booking
 function Booking() {
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
+    if (sending) return
     if (typeof gtag === 'function') gtag('event', 'ads_conversion_Form_1', {})
+    const fd = new FormData(e.target)
+    const payload = {
+      type: 'enquiry',
+      name: fd.get('name') || '',
+      email: fd.get('email') || '',
+      phone: fd.get('phone') || '',
+      service: fd.get('service') || '',
+      date: fd.get('date') || '',
+      message: fd.get('message') || '',
+    }
+    setSending(true)
+    try {
+      await fetch('/api/send-booking.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+    } catch (err) {
+      console.error('[NidanGuru] Enquiry email failed:', err)
+    }
+    setSending(false)
     setSubmitted(true)
   }
 
@@ -1002,8 +1029,14 @@ function Booking() {
             <p className="section-label">✦ Consultations</p>
             <h2 className="section-title">Begin Your<br /><em>Cosmic</em> Journey</h2>
             <div className="gold-divider left" />
-            <p className="section-desc" style={{ marginBottom: '2.5rem' }}>
-              Fill in your details and we will confirm your appointment within 24 hours. All sessions are available online or in-person at our Delhi centre.
+            <p className="section-desc" style={{ marginBottom: '1.5rem' }}>
+              Want to pick a specific time? Use our interactive calendar to see real-time availability and reserve your slot instantly. The consultation fee is ₹6,000 — pay just a ₹500 token now to confirm, with the balance collected at your session.
+            </p>
+            <button className="btn-primary" style={{ marginBottom: '2rem' }} onClick={openBooking}>
+              Open Booking Calendar →
+            </button>
+            <p className="section-desc" style={{ marginBottom: '2.5rem', fontSize: '0.82rem' }}>
+              Or fill in the form and we will confirm your appointment within 24 hours. All sessions are available online or in-person at our Delhi centre.
             </p>
 
             <div className="contact-item">
@@ -1035,19 +1068,19 @@ function Booking() {
               <form onSubmit={handleSubmit}>
                 <div className="form-group">
                   <label>Full Name</label>
-                  <input type="text" placeholder="Your name" />
+                  <input type="text" name="name" placeholder="Your name" required />
                 </div>
                 <div className="form-group">
                   <label>Email Address</label>
-                  <input type="email" placeholder="you@example.com" />
+                  <input type="email" name="email" placeholder="you@example.com" required />
                 </div>
                 <div className="form-group">
                   <label>Phone Number</label>
-                  <input type="tel" placeholder="+91 00000 00000" />
+                  <input type="tel" name="phone" placeholder="+91 00000 00000" required />
                 </div>
                 <div className="form-group">
                   <label>Service Required</label>
-                  <select>
+                  <select name="service">
                     <option value="">— Select a service —</option>
                     <option>Birth Chart Analysis</option>
                     <option>Vastu Audit (Home / Office)</option>
@@ -1059,14 +1092,14 @@ function Booking() {
                 </div>
                 <div className="form-group">
                   <label>Preferred Date</label>
-                  <input type="date" />
+                  <input type="date" name="date" />
                 </div>
                 <div className="form-group">
                   <label>Your Message</label>
-                  <textarea placeholder="Share a brief context or question..." />
+                  <textarea name="message" placeholder="Share a brief context or question..." />
                 </div>
-                <button type="submit" className="btn-primary" style={{ width: '100%', cursor: 'pointer', fontFamily: 'var(--sans)' }}>
-                  Request Consultation
+                <button type="submit" className="btn-primary" disabled={sending} style={{ width: '100%', cursor: sending ? 'wait' : 'pointer', fontFamily: 'var(--sans)' }}>
+                  {sending ? 'Sending…' : 'Request Consultation'}
                 </button>
               </form>
             ) : (
@@ -1113,7 +1146,7 @@ function Footer() {
         </div>
         <div className="footer-links">
           {links.map(l => (
-            <button key={l.target} onClick={() => scrollToSection(l.target)}>{l.label}</button>
+            <button key={l.target} onClick={() => l.target === 'booking' ? openBooking() : scrollToSection(l.target)}>{l.label}</button>
           ))}
         </div>
         <p className="footer-copy">© 2026 NidanGuru. All rights reserved. Powered by Cosmic Insights ✦</p>
@@ -1203,6 +1236,12 @@ function PromoBanner({ onClose }) {
 export default function App() {
   const starCanvasRef = useStarCanvas()
   const [promoBanner, setPromoBanner] = useState(true)
+  const [bookingOpen, setBookingOpen] = useState(false)
+
+  useEffect(() => {
+    _openBooking = () => setBookingOpen(true)
+    return () => { _openBooking = () => {} }
+  }, [])
 
   return (
     <>
@@ -1215,6 +1254,7 @@ export default function App() {
       </Routes>
       <Footer />
       <WhatsAppToggle />
+      <BookingCalendar isOpen={bookingOpen} onClose={() => setBookingOpen(false)} />
     </>
   )
 }

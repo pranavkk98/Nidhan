@@ -2705,3 +2705,282 @@ body.mkt-mode #stars { display: none; }
   .mkt-card-body { padding: 1rem; }
   .mkt-card-footer { flex-direction: column; align-items: flex-start; }
 }
+
+/* ─── Booking Calendar Modal ─── */
+.bcal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(10, 14, 26, 0.88);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.bcal-modal {
+  background: var(--navy2);
+  border: 1px solid rgba(212, 168, 67, 0.25);
+  border-radius: 4px;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  padding: 2.5rem 2rem 2rem;
+  animation: bcal-in 0.22s ease;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212,168,67,0.3) transparent;
+}
+
+@keyframes bcal-in {
+  from { opacity: 0; transform: translateY(16px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)   scale(1);    }
+}
+
+.bcal-close {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  background: none; border: none;
+  color: var(--muted); font-size: 1.1rem;
+  cursor: pointer; padding: 0.3rem 0.6rem;
+  border-radius: 2px;
+  transition: color 0.2s, background 0.2s;
+}
+.bcal-close:hover { color: var(--gold); background: rgba(212,168,67,0.08); }
+
+.bcal-step { display: flex; flex-direction: column; gap: 1.2rem; }
+
+.bcal-title {
+  font-family: var(--serif);
+  font-size: 1.75rem; font-weight: 400;
+  color: var(--white);
+  text-align: center; margin: 0;
+}
+
+.bcal-meta-row {
+  display: flex; justify-content: center;
+  gap: 1.25rem; flex-wrap: wrap;
+  font-family: var(--sans); font-size: 0.76rem;
+  color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.bcal-month-nav {
+  display: flex; align-items: center;
+  justify-content: space-between;
+}
+
+.bcal-month-label {
+  font-family: var(--sans); font-size: 0.95rem;
+  color: var(--gold); font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.bcal-nav-btn {
+  background: none;
+  border: 1px solid rgba(212,168,67,0.3);
+  color: var(--gold);
+  width: 30px; height: 30px;
+  border-radius: 50%; font-size: 1.1rem;
+  cursor: pointer; display: flex;
+  align-items: center; justify-content: center;
+  transition: background 0.15s;
+}
+.bcal-nav-btn:hover { background: rgba(212,168,67,0.12); }
+
+.bcal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+}
+
+.bcal-day-header {
+  font-family: var(--sans); font-size: 0.68rem;
+  color: var(--muted); text-align: center;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  padding: 0.2rem 0;
+}
+
+.bcal-day-cell {
+  aspect-ratio: 1;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%; font-family: var(--sans);
+  font-size: 0.82rem; border: none; cursor: pointer;
+  transition: all 0.13s;
+}
+
+.bcal-day--available {
+  color: var(--white);
+  background: rgba(245,240,232,0.04);
+}
+.bcal-day--available:hover {
+  background: rgba(212,168,67,0.2);
+  color: var(--gold-light);
+}
+
+.bcal-day--disabled {
+  color: rgba(245,240,232,0.18);
+  background: transparent; cursor: not-allowed;
+}
+
+.bcal-date-pill {
+  font-family: var(--sans); font-size: 0.82rem;
+  color: var(--gold); text-align: center;
+  background: rgba(212,168,67,0.07);
+  border: 1px solid rgba(212,168,67,0.2);
+  padding: 0.35rem 1rem; border-radius: 2px; margin: 0;
+}
+
+.bcal-slots-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 0.55rem;
+}
+
+.bcal-slot {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 0.2rem;
+  padding: 0.7rem;
+  border: 1px solid rgba(245,240,232,0.1);
+  background: rgba(245,240,232,0.03);
+  border-radius: 3px; cursor: pointer;
+  transition: all 0.13s;
+}
+
+.bcal-slot--booked { opacity: 0.32; cursor: not-allowed; }
+.bcal-slot--selected {
+  border-color: var(--gold);
+  background: rgba(212,168,67,0.1);
+}
+.bcal-slot:not(.bcal-slot--booked):not(.bcal-slot--selected):hover {
+  border-color: rgba(212,168,67,0.4);
+  background: rgba(212,168,67,0.06);
+}
+
+.bcal-slot-time {
+  font-family: var(--sans); font-size: 0.88rem;
+  font-weight: 600; color: var(--white);
+}
+.bcal-slot-tag {
+  font-family: var(--sans); font-size: 0.62rem;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.bcal-slot--selected .bcal-slot-tag { color: var(--gold); }
+.bcal-slot--booked .bcal-slot-tag { color: rgba(245,240,232,0.25); }
+
+.bcal-proceed-btn {
+  width: 100%; cursor: pointer;
+  font-family: var(--sans); padding: 0.85rem;
+  font-size: 0.88rem; letter-spacing: 0.05em;
+}
+.bcal-proceed-btn:disabled {
+  opacity: 0.35; cursor: not-allowed; transform: none !important;
+}
+
+.bcal-back {
+  background: none; border: none;
+  color: var(--muted); font-family: var(--sans);
+  font-size: 0.78rem; cursor: pointer;
+  padding: 0; text-align: left;
+  transition: color 0.2s;
+}
+.bcal-back:hover { color: var(--gold); }
+
+.bcal-form { display: flex; flex-direction: column; gap: 0.9rem; }
+
+.bcal-emergency {
+  display: flex; align-items: flex-start;
+  gap: 0.65rem;
+  background: rgba(212,168,67,0.04);
+  border: 1px solid rgba(212,168,67,0.14);
+  border-radius: 3px; padding: 0.8rem 0.9rem;
+  font-family: var(--sans); font-size: 0.78rem;
+  color: var(--muted); line-height: 1.5;
+}
+.bcal-emergency-icon { color: var(--gold); font-size: 0.9rem; flex-shrink: 0; margin-top: 1px; }
+.bcal-emergency strong { color: var(--white); }
+.bcal-emergency a { color: var(--gold-light); text-decoration: none; }
+.bcal-emergency a:hover { text-decoration: underline; }
+
+.bcal-payment-card {
+  border: 1px solid rgba(212,168,67,0.28);
+  border-radius: 4px; padding: 1.5rem;
+  display: flex; flex-direction: column; gap: 1.2rem;
+  background: rgba(212,168,67,0.04);
+}
+
+.bcal-amount-display {
+  display: flex; align-items: baseline;
+  gap: 0.35rem; justify-content: center;
+}
+.bcal-currency { font-family: var(--serif); font-size: 1.8rem; color: var(--gold); }
+.bcal-amount-num { font-family: var(--serif); font-size: 3.5rem; color: var(--gold-light); line-height: 1; }
+.bcal-amount-label {
+  font-family: var(--sans); font-size: 0.72rem;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--muted); align-self: center;
+}
+
+.bcal-upi-section {
+  display: flex; flex-direction: column;
+  gap: 0.5rem; align-items: center; text-align: center;
+}
+.bcal-upi-note { font-family: var(--sans); font-size: 0.82rem; color: var(--muted); margin: 0; }
+.bcal-upi-id {
+  display: flex; align-items: center; gap: 0.75rem;
+  background: rgba(245,240,232,0.04);
+  border: 1px solid rgba(245,240,232,0.1);
+  padding: 0.55rem 1.1rem; border-radius: 2px;
+}
+.bcal-upi-label {
+  font-family: var(--sans); font-size: 0.68rem;
+  color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em;
+}
+.bcal-upi-value { font-family: var(--sans); font-size: 1rem; font-weight: 600; color: var(--white); }
+.bcal-upi-sub { font-family: var(--sans); font-size: 0.7rem; color: var(--muted); margin: 0; }
+
+.bcal-step--success { align-items: center; text-align: center; }
+
+.bcal-success-check {
+  width: 60px; height: 60px; border-radius: 50%;
+  background: rgba(212,168,67,0.1);
+  border: 2px solid var(--gold);
+  color: var(--gold-light); font-size: 1.6rem;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto;
+}
+
+.bcal-subtitle { font-family: var(--sans); font-size: 0.88rem; color: var(--muted); margin: 0; }
+
+.bcal-summary-box {
+  width: 100%; border: 1px solid rgba(212,168,67,0.18);
+  border-radius: 3px; overflow: hidden;
+}
+.bcal-summary-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.65rem 1rem; font-family: var(--sans); font-size: 0.82rem;
+  border-bottom: 1px solid rgba(245,240,232,0.06);
+}
+.bcal-summary-row:last-child { border-bottom: none; }
+.bcal-summary-row span { color: var(--muted); }
+.bcal-summary-row strong { color: var(--white); }
+
+.bcal-confirm-note {
+  font-family: var(--sans); font-size: 0.78rem;
+  color: var(--muted); text-align: center; margin: 0;
+}
+.bcal-confirm-note strong { color: var(--gold-light); }
+
+.bcal-success-btns {
+  display: flex; flex-direction: column;
+  gap: 0.6rem; width: 100%; align-items: center;
+}
+
+@media (max-width: 480px) {
+  .bcal-modal { padding: 2rem 1.1rem 1.5rem; }
+  .bcal-meta-row { gap: 0.6rem; font-size: 0.7rem; }
+  .bcal-amount-num { font-size: 2.8rem; }
+  .bcal-slots-grid { gap: 0.4rem; }
+}
